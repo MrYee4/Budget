@@ -2,8 +2,9 @@
 # CS240
 # Budget will take in my income and expenses and diplay my monthly budget
 
-
+#This budget class will contain all the info needed for the budget
 class Budget:
+    #class constructor
     def __init__(self, income, rent, food, gas, fun):
         self.income = income
         self.mIncome = 4 * income
@@ -12,6 +13,7 @@ class Budget:
         self.gas = gas
         self.fun = fun
 
+    #Will print out budget in a table
     def printBudget(self):
         print("       |   Weekly   |   Monthly   |")
         print("-------|------------|-------------|")
@@ -24,10 +26,12 @@ class Budget:
         print("-------|------------|-------------|")
         print("Savings|", " "*(9-len(str(self.calculateSaving()))), self.calculateSaving(), "|", " "*(10-len(str(self.calculateSaving() * 4))), (self.calculateSaving() * 4), "|")
 
+    #displays income to user
     def printIncome(self):
         print("weekly income: ", self.income)
         print("Monthly income: ", self.mIncome)
 
+    #calculates how much money is left over after expenses
     def calculateSaving(self):
         self.saving = self.income - (self.rent + self.food + self.gas + self.fun)
         return self.saving
@@ -36,6 +40,7 @@ class Budget:
 
 
 def main():
+    #asks user for budget values
     pay = float(input("How much do you make an hour: "))
     hours = float(input("How many hours do you work a week: "))
     income = (pay * hours)
@@ -45,6 +50,7 @@ def main():
     gas = float(input("How much is gas per week: "))
     fun = float(input("How much do you want to spend for fun a week: "))
 
+    #budget object
     b1 = Budget(income, rent, food, gas, fun)
     b1.printIncome()
     print("")
